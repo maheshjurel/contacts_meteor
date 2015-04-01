@@ -1,0 +1,85 @@
+<head>
+  <title>Contacts</title>
+</head>
+
+<body >
+	
+  <center>
+  			<h1>{{>loginButtons align=right}}</h1>
+  	<div>
+  		<header>
+  				<h1>Welcome to Contacts!</h1>
+  					{{#if currentUser}}
+  			<section class="main">
+				<form class="form-1"  enctype="multipart/form-data">
+                
+                	<p class="field">
+						<input type="text" name="name" value="{{editname}}" placeholder="Name" required>
+						<i class="icon-user icon-large"></i>
+					</p>
+					<p class="field">
+						<input type="text" name="mobile" value="{{editmobile}}" placeholder="Mobile No" required>
+						<i class="icon-user icon-large"></i>
+					</p>
+					<p class="field">
+						<input type="text" name="email" value="{{editemail}}" placeholder="Email id" required>
+						<i class="icon-user icon-large"></i>
+					</p>
+					<p class="field">
+						<input type="text" name="address" value="{{editaddress}}" placeholder="Address"
+						required>
+						<i class="icon-user icon-large"></i>
+						</p>
+					<p class="field">	
+						<h3>Upload Image</h3></p>
+						*only .jpg file
+						<label for="file">Filename:</label>
+						<input type="file" name="file" id="file"><br>
+					
+						
+					<p class="submit">
+						<button  type="submit"  name="submit" onClick="validate()"><i class="icon-arrow-right icon-large"></i></button>
+
+					</p>
+					
+				</form>
+				<p class="field">
+						<button class="edit" name="edit">Edit checked contact</button>
+						<i class="icon-user icon-large"></i>
+						</p>
+						
+
+			</section>
+			{{/if}}
+  		</header>	
+  	</div>
+  
+  	
+  	<div class="contacts">	
+  		{{#each contacts_db}}
+  		<ul>
+  		{{>contact}}
+  		
+  		</ul>
+
+  		{{/each}}
+  		
+  	</div>
+
+  
+</center>
+</body>
+
+
+
+<template name="contact">
+
+	<input type="radio" name="editcon" class="editcon">Edit this
+	<li>Name:{{name}}</li>
+	<li>Mobile no:{{mobile}}</li>
+	<li>Email id:{{email}}</li>
+	<li>Address:{{address}}</li>
+ 	
+
+ 	<button class="delete" name="delete">Delete</button>
+  </template>
